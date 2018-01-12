@@ -3,8 +3,6 @@ syntax enable
 set history=9999
 set undolevels=9999
 
-inoremap jk <ESC>
-
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !mkdir -p ~/.vim/autoload
   silent !curl -fLo ~/.vim/autoload/plug.vim
@@ -20,47 +18,29 @@ Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'sjl/gundo.vim'
+
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'godlygeek/tabular'
 
-
-" Search
-Plug 'junegunn/vim-pseudocl'
-Plug 'junegunn/vim-oblique'
-Plug 'rking/ag.vim'
+" search
 Plug 'easymotion/vim-easymotion'
 
 " Buffers
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-" Tags
-Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
-Plug 'xolox/vim-misc'
-
-" Motions
-Plug 'Lokaltog/vim-easymotion'
-
-
 " Code Related
 Plug 'Raimondi/delimitMate'                                                     " Close matching parenthesis and the like
 Plug 'jeetsukumaran/vim-indentwise'                                             " Move around in indents
-Plug 'antoyo/vim-licenses'                                                      " FOSS Licensse
 Plug 'scrooloose/syntastic'                                                     " Syntax Checking
-Plug 'SirVer/ultisnips'                                                         " Tab Completion of entities
-" Plug 'honza/vim-snippets'                                                       " Snippets of code
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' } " Code Completion
-Plug 'tpope/vim-dispatch'                                                       " Compile Async
-" Plug 'KabbAmine/zeavim.vim'
-Plug 'editorconfig/editorconfig-vim'                                            " Different config for different languages
+Plug 'rizzatti/dash.vim'                                                        " Search Dash on vim
 
 
 " UI
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 Plug 'kyuhi/vim-emoji-complete'
-Plug 'junegunn/vim-emoji'
-" Plug 'vim-scripts/vim-webdevicons'
 
 
 " Markdown
@@ -69,24 +49,23 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " HTML
 Plug 'mattn/emmet-vim'
-Plug 'vim-scripts/closetag.vim'
-Plug 'vim-scripts/css_color'
+Plug 'alvan/vim-closetag'
+Plug 'skammer/vim-css-color'
 
 " JS
 " Plug 'marijnh/tern_for_vim' , {'do': 'npm install'}
-Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 
 " C-family
 Plug 'chazy/cscope_maps'
-Plug 'vim-scripts/IndentWise'
 
 " Git
 Plug 'tpope/vim-fugitive'
 
-" Miscellaneous Tooling
-Plug 'tmux-plugins/vim-tmux'
-Plug 'neilagabriel/vim-geeknote'
+
+" Silly image to ascii
+Plug 'ashisha/image.vim'
+
 
 call plug#end()
 
@@ -198,7 +177,6 @@ filetype indent on
 " Be smart when using tabs ;)
 set smarttab
 
-" Migrated to editorconfig
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
@@ -206,7 +184,7 @@ set softtabstop=4
 set expandtab "Converts tabs into space characters
 
 " Textwrap at 80 haracters
-set tw=100
+set tw=80
 set wrap
 
 " Tab completion
@@ -235,21 +213,14 @@ set laststatus=2
 "Show editor mode
 set showmode
 set cmdheight=1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => gVIM
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" GVim remove unnecessary borders
-if has('gui_running')
-  set go-=mr
-  set go-=T
-  set guifont=Sauce\ Code\ Powerline\ 13
-  colorscheme solarized
-  set background=light
-endif
 
 " Licenses
 """""""""""
 let g:licenses_authors_name = 'Michael Hazani <michael@michaelhazani.com>'
 let g:licenses_copyright_holders_name = 'Michael Hazani'
 
-
+" map gundo to ctrl-u
+nnoremap <c-u> :GundoToggle<CR>
+" nerdtree autostart
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
