@@ -3,6 +3,7 @@ syntax enable
 set history=9999
 set undolevels=9999
 
+" install vim-plug if nonexisting
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !mkdir -p ~/.vim/autoload
   silent !curl -fLo ~/.vim/autoload/plug.vim
@@ -86,7 +87,7 @@ set ruler
 "This is the most awesome configurationa ever, is shows both
 "the absolute and relative numbering together to make jumps
 "easier
-set number
+set relativenumber
 " set relativenumber
 nnoremap <silent><leader>n :set relativenumber!<cr>
 
@@ -178,9 +179,9 @@ filetype indent on
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set expandtab "Converts tabs into space characters
 
 " Textwrap at 80 haracters
@@ -221,6 +222,11 @@ let g:licenses_copyright_holders_name = 'Michael Hazani'
 
 " map gundo to ctrl-u
 nnoremap <c-u> :GundoToggle<CR>
+" open NERDTree only if directory was given as startup argument
+" let g:nerdtree_tabs_open_on_gui_startup=2
 " nerdtree autostart
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+ autocmd VimEnter * NERDTree
+" if specific file was opened, set cursor on it, otherwise stick to NERDtree
+ if argc() != 0
+    autocmd VimEnter * wincmd p
+endif
