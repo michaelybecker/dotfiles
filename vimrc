@@ -42,7 +42,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 Plug 'kyuhi/vim-emoji-complete'
-
+Plug 'ryanoasis/vim-devicons'
 
 " Markdown
 Plug 'vim-pandoc/vim-pantondoc'
