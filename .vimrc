@@ -233,3 +233,9 @@ endif
 
 " set a global ycm config file for C++, etc.
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+" pesky arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
