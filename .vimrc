@@ -43,6 +43,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 Plug 'kyuhi/vim-emoji-complete'
 Plug 'ryanoasis/vim-devicons'
+Plug 'henrik/vim-reveal-in-finder'
 
 " Markdown
 Plug 'vim-pandoc/vim-pantondoc'
@@ -52,6 +53,8 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 Plug 'skammer/vim-css-color'
+Plug 'chrisbra/Colorizer'
+
 
 " JS
 " Plug 'marijnh/tern_for_vim' , {'do': 'npm install'}
@@ -234,7 +237,13 @@ endif
 " set a global ycm config file for C++, etc.
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
-" pesky arrow keys
+" refresh NERDTree shortcut
+nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-j>
+
+"autoload Colorizer
+let g:colorizer_auto_filetype='css,html,js,cpp,h,py'
+
+" no arrows
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
