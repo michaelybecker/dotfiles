@@ -89,7 +89,7 @@ set ruler
 "the absolute and relative numbering together to make jumps
 "easier
 set relativenumber
-" set relativenumber
+set number
 nnoremap <silent><leader>n :set relativenumber!<cr>
 
 
