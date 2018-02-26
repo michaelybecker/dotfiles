@@ -73,6 +73,8 @@ call plug#end()
 
 
 colorscheme monokai
+"make comments better on transparent bg
+set background=light
 
 " Set 256 colors in vim
 set t_Co=256
