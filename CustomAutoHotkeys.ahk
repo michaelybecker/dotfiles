@@ -1,12 +1,19 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #SingleInstance Force
-; #Warn  ; Enable warnings to assist with detecting common errors.
+#SingleInstance Force
+#Warn  ; Enable warnings to assist with detecting common errors.
+
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ^!t::
-FileAppend Temporary Text: `n, C:\Users\123mi\Desktop\temp.txt
-Run C:\Users\123mi\Desktop\temp.txt 
+if FileExist("C:\Users\123mi\Desktop\temp.txt")
+{
+    Run C:\Users\123mi\Desktop\temp.txt    
+}
+else {
+    FileAppend Temporary Text:, C:\Users\123mi\Desktop\temp.txt
+    Run C:\Users\123mi\Desktop\temp.txt 
+}
 return
 
 ^!d::
