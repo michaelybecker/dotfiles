@@ -6,13 +6,13 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ^!t::
-if FileExist("C:\Users\123mi\Desktop\temp.txt")
+if FileExist("C:\Users\123mi\Dropbox\Temp Hosting\temp.txt")
 {
-    Run C:\Users\123mi\Desktop\temp.txt    
+    Run C:\Users\123mi\Dropbox\Temp Hosting\temp.txt
 }
 else {
-    FileAppend Temporary Text:, C:\Users\123mi\Desktop\temp.txt
-    Run C:\Users\123mi\Desktop\temp.txt 
+    FileAppend Temporary Text:, C:\Users\123mi\Dropbox\Temp Hosting\temp.txt
+    Run C:\Users\123mi\Dropbox\Temp Hosting\temp.txt
 }
 return
 
@@ -21,7 +21,6 @@ return
 FormatTime, CurrentDateTime,, yyyy_MM_dd
 if FileExist("C:\Users\123mi\Dropbox\Documents\Dailies\" CurrentDateTime ".txt")
 {
-    ; MsgBox Exists!
     Run C:\Users\123mi\Dropbox\Documents\Dailies\%CurrentDateTime%.txt
 }
 else
@@ -31,8 +30,6 @@ else
     
     , C:\Users\123mi\Dropbox\Documents\Dailies\%CurrentDateTime%.txt
     Run C:\Users\123mi\Dropbox\Documents\Dailies\%CurrentDateTime%.txt
- 
-    ; MsgBox C:\Users\123mi\Dropbox\Documents\Dailies\%CurrentDateTime%.txt Doesn't Exist, created!
 }
 return
 
