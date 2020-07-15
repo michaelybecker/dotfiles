@@ -6,30 +6,30 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ^!t::
-if FileExist("C:\Users\123mi\Dropbox\Temp Hosting\temp.txt")
+if FileExist("D:\Dropbox\Temp Hosting\temp.txt")
 {
-    Run C:\Users\123mi\Dropbox\Temp Hosting\temp.txt
+    Run D:\Dropbox\Temp Hosting\temp.txt
 }
 else {
-    FileAppend Temporary Text:, C:\Users\123mi\Dropbox\Temp Hosting\temp.txt
-    Run C:\Users\123mi\Dropbox\Temp Hosting\temp.txt
+    FileAppend Temporary Text:, D:\Dropbox\Temp Hosting\temp.txt
+    Run D:\Dropbox\Temp Hosting\temp.txt
 }
 return
 
 ^!d::
 
 FormatTime, CurrentDateTime,, yyyy_MM_dd
-if FileExist("C:\Users\123mi\Dropbox\Documents\Dailies\" CurrentDateTime ".txt")
+if FileExist("D:\Dropbox\Documents\Dailies\" CurrentDateTime ".txt")
 {
-    Run C:\Users\123mi\Dropbox\Documents\Dailies\%CurrentDateTime%.txt
+    Run D:\Dropbox\Documents\Dailies\%CurrentDateTime%.txt
 }
 else
 {
     FileAppend ,To-Do List for %CurrentDateTime%: 
     
     
-    , C:\Users\123mi\Dropbox\Documents\Dailies\%CurrentDateTime%.txt
-    Run C:\Users\123mi\Dropbox\Documents\Dailies\%CurrentDateTime%.txt
+    , D:\Dropbox\Documents\Dailies\%CurrentDateTime%.txt
+    Run D:\Dropbox\Documents\Dailies\%CurrentDateTime%.txt
 }
 return
 
