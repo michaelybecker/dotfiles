@@ -1,3 +1,9 @@
+let g:netrw_liststyle = 3
+
+autocmd VimEnter *
+    \ Vexplore 20 |
+    \ execute "wincmd l" |
+
 syntax enable
 
 set history=9999
@@ -13,68 +19,43 @@ endif
 
 
 call plug#begin('~/.vim/plugged')
-Plug 'nightsense/vrunchbang'
-Plug 'tpope/vim-sensible'
-Plug 'junegunn/seoul256.vim'
-Plug 'tpope/vim-surround'
-Plug 'tomtom/tcomment_vim'
-Plug 'sjl/gundo.vim'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'junegunn/seoul256.vim'
+  Plug 'tpope/vim-surround'
+  Plug 'tomtom/tcomment_vim'
+  Plug 'sjl/gundo.vim'
+  Plug 'ghifarit53/tokyonight-vim'
+  Plug 'bronson/vim-trailing-whitespace'
 
-Plug 'bronson/vim-trailing-whitespace'
-
-" search
-Plug 'easymotion/vim-easymotion'
-
-" Buffers
-Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
-" Code Related
-Plug 'Raimondi/delimitMate'                                                     " Close matching parenthesis and the like
-Plug 'jeetsukumaran/vim-indentwise'                                             " Move around in indents
-Plug 'scrooloose/syntastic'                                                     " Syntax Checking
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' } " Code Completion
-Plug 'rizzatti/dash.vim'                                                        " Search Dash on vim
+  " search
+  Plug 'easymotion/vim-easymotion'
 
 
-" UI
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'flazz/vim-colorschemes'
-Plug 'kyuhi/vim-emoji-complete'
-Plug 'ryanoasis/vim-devicons'
-
-" Markdown
-Plug 'vim-pandoc/vim-pantondoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-
-" HTML
-Plug 'mattn/emmet-vim'
-Plug 'alvan/vim-closetag'
-Plug 'skammer/vim-css-color'
-
-" JS
-" Plug 'marijnh/tern_for_vim' , {'do': 'npm install'}
-Plug 'pangloss/vim-javascript'
-Plug 'maksimr/vim-jsbeautify'
-
-" C-family
-Plug 'chazy/cscope_maps'
-
-" Git
-Plug 'tpope/vim-fugitive'
+  " Code Related
+  Plug 'Raimondi/delimitMate'                                                     " Close matching parenthesis and the like
+  Plug 'scrooloose/syntastic'                                                     " Syntax Checking
 
 
-" Silly image to ascii
-Plug 'ashisha/image.vim'
+  " UI
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'flazz/vim-colorschemes'
+  Plug 'kyuhi/vim-emoji-complete'
+  Plug 'ryanoasis/vim-devicons'
 
+  " Git
+  Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
 
-colorscheme monokai
-"make comments better on transparent bg
-set background=light
+syntax enable
+set termguicolors
+"colorscheme monokai
+let g:tokyonight_transparent_background = 1
+colorscheme tokyonight
+
+" set background=dark
 
 " Set 256 colors in vim
 set t_Co=256
@@ -84,15 +65,10 @@ set title
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
-"Always show current position
 set ruler
 
-"This is the most awesome configurationa ever, is shows both
-"the absolute and relative numbering together to make jumps
-"easier
-set relativenumber
 set number
-nnoremap <silent><leader>n :set relativenumber!<cr>
+set relativenumber
 
 
 " Configure backspace so it acts as it should act
@@ -144,13 +120,10 @@ set showmatch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding is enabled by default
 set foldenable
-
 " Only very nested blocks will be folded
 set foldlevelstart=2 " 99 means everything will open up
-
 " The maximum nesting level
 set foldnestmax=10
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -171,9 +144,7 @@ set nowb
 set noswapfile
 
 " Enable filetype plugins
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -203,9 +174,6 @@ set wildignore=*.o,*~,*.pyc
 set autoindent "Auto indent
 set smartindent "Smart indent
 
-"Adding omnicomplete
-set ofu=syntaxcomplete#Complete
-
 se mouse+=a
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -218,40 +186,6 @@ set laststatus=2
 set showmode
 set cmdheight=1
 
-" Licenses
-"""""""""""
-let g:licenses_authors_name = 'Michael Hazani <michael@michaelhazani.com>'
-let g:licenses_copyright_holders_name = 'Michael Hazani'
-
-" map gundo to ctrl-u
-nnoremap <c-u> :GundoToggle<CR>
-" open NERDTree only if directory was given as startup argument
-" let g:nerdtree_tabs_open_on_gui_startup=2
-" nerdtree autostart
- autocmd VimEnter * NERDTree
-" if specific file was opened, set cursor on it, otherwise stick to NERDtree
- if argc() != 0
-    autocmd VimEnter * wincmd p
-endif
-
 " clipboard interop
-set clipboard=unnamed
+set clipboard=unnamedplus
 
-" set a global ycm config file for C++, etc.
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-
-" prettify JS on save
-" autocmd FileType javascript set formatprg=prettier\ --stdin
-" autocmd BufWritePre *.js :normal gggqG
-" map formatting shortcut
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" for json
-autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
-" for jsx
-autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-" show hidden files
-let NERDTreeShowHidden=1
