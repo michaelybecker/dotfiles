@@ -1,8 +1,19 @@
 let g:netrw_liststyle = 3
 
-autocmd VimEnter *
-    \ Vexplore 20 |
-    \ execute "wincmd l" |
+set splitright
+set noequalalways
+
+autocmd VimEnter * call s:OpenNetrwLeftFixed()
+autocmd FileType netrw setlocal winfixwidth
+autocmd FileType netrw vertical resize 40
+
+function! s:OpenNetrwLeftFixed()
+  " Open a vertical split with 40 columns
+  topleft vertical 40new
+  setlocal winfixwidth
+  execute 'Explore'
+  wincmd l
+endfunction
 
 syntax enable
 
@@ -188,4 +199,4 @@ set cmdheight=1
 
 " clipboard interop
 set clipboard=unnamedplus
-
+set splitbelow
