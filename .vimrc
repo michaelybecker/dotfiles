@@ -3,17 +3,16 @@ let g:netrw_browse_split = 0        " Stay in same window for folders
 let g:netrw_altv = 1                " Open files in vertical split
 let g:netrw_winsize = 60
 
-autocmd FileType netrw setlocal winfixwidth
-autocmd FileType netrw vertical resize 25
+" autocmd FileType netrw setlocal winfixwidth
+" autocmd FileType netrw vertical resize 25
+" function! s:OpenNetrwLeft()
+"   topleft vertical 25new
+"   setlocal winfixwidth
+"   execute 'Explore'
+"   wincmd l
+" endfunction
 
-function! s:OpenNetrwLeft()
-  topleft vertical 25new
-  setlocal winfixwidth
-  execute 'Explore'
-  wincmd l
-endfunction
-
-autocmd VimEnter * call s:OpenNetrwLeft()
+" autocmd VimEnter * call s:OpenNetrwLeft()
 
 set splitright
 set noequalalways
@@ -65,7 +64,7 @@ call plug#end()
 
 syntax enable
 set termguicolors
-"colorscheme monokai
+" colorscheme monokai
 let g:tokyonight_transparent_background = 1
 colorscheme tokyonight
 
