@@ -64,9 +64,9 @@ call plug#end()
 
 syntax enable
 set termguicolors
-" colorscheme monokai
+colorscheme monokai
 let g:tokyonight_transparent_background = 1
-colorscheme tokyonight
+" colorscheme tokyonight
 
 " set background=dark
 
