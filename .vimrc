@@ -47,6 +47,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ghifarit53/tokyonight-vim'
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'vimwiki/vimwiki'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
   " search
   Plug 'easymotion/vim-easymotion'
