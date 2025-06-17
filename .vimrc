@@ -3,6 +3,12 @@ let g:netrw_browse_split = 0        " Stay in same window for folders
 let g:netrw_altv = 1                " Open files in vertical split
 let g:netrw_winsize = 60
 
+
+" VimWiki configs
+let g:vimwiki_list = [{'path': '~/dev/wiki/',
+      \ 'syntax': 'markdown',
+      \ 'ext': '.md'
+      \ }]
 " autocmd FileType netrw setlocal winfixwidth
 " autocmd FileType netrw vertical resize 25
 " function! s:OpenNetrwLeft()
@@ -16,8 +22,9 @@ let g:netrw_winsize = 60
 
 set splitright
 set noequalalways
+set nocompatible
 
-syntax enable
+syntax on
 
 set history=9999
 set undolevels=9999
@@ -39,6 +46,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'sjl/gundo.vim'
   Plug 'ghifarit53/tokyonight-vim'
   Plug 'bronson/vim-trailing-whitespace'
+  Plug 'vimwiki/vimwiki'
 
   " search
   Plug 'easymotion/vim-easymotion'
