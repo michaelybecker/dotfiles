@@ -39,6 +39,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'sjl/gundo.vim'
   Plug 'ghifarit53/tokyonight-vim'
   Plug 'bronson/vim-trailing-whitespace'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+
 
   " search
   Plug 'easymotion/vim-easymotion'
@@ -64,9 +66,9 @@ call plug#end()
 
 syntax enable
 set termguicolors
-colorscheme monokai
+" colorscheme monokai
 let g:tokyonight_transparent_background = 1
-" colorscheme tokyonight
+colorscheme tokyonight
 
 " set background=dark
 
