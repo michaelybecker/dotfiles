@@ -38,6 +38,8 @@ endif
 
 
 call plug#begin('~/.vim/plugged')
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'  
   Plug 'sheerun/vim-polyglot'
   Plug 'junegunn/seoul256.vim'
   Plug 'tpope/vim-surround' " 'cs XY to turn surr X into Y
@@ -89,6 +91,7 @@ set lazyredraw
 
 " For regular expressions turn magic on
 set magic
+set regexpengine=2
 
 " How many tenths of a second to blink when matching brackets
 set mat=2
