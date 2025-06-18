@@ -179,7 +179,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc/,node_modules/**,.git/**
 
 
 " Indentation
