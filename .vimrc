@@ -40,26 +40,14 @@ endif
 call plug#begin('~/.vim/plugged')
   Plug 'sheerun/vim-polyglot'
   Plug 'junegunn/seoul256.vim'
-  Plug 'tpope/vim-surround'
-  Plug 'tomtom/tcomment_vim'
-  Plug 'sjl/gundo.vim'
+  Plug 'tpope/vim-surround' " 'cs XY to turn surr X into Y
+  Plug 'tomtom/tcomment_vim' " 'gc' to comment line / entire section
   Plug 'ghifarit53/tokyonight-vim'
-  Plug 'bronson/vim-trailing-whitespace'
   Plug 'vimwiki/vimwiki'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
-
-  " search
-  Plug 'easymotion/vim-easymotion'
-
-
   " Code Related
-  Plug 'Raimondi/delimitMate'                                                     " Close matching parenthesis and the like
-  Plug 'scrooloose/syntastic'                                                     " Syntax Checking
-
-
+  Plug 'Raimondi/delimitMate' " Close matching parenthesis and the like
   " UI
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
   Plug 'flazz/vim-colorschemes'
   Plug 'kyuhi/vim-emoji-complete'
   Plug 'ryanoasis/vim-devicons'
@@ -180,8 +168,8 @@ set softtabstop=2
 set expandtab "Converts tabs into space characters
 
 " Textwrap at 80 haracters
-set tw=80
-set wrap
+" set tw=80
+" set wrap
 
 " Tab completion
 set wildmenu
