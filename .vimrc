@@ -4,21 +4,20 @@ let g:netrw_altv = 1                " Open files in vertical split
 let g:netrw_winsize = 60
 
 
+
+
 " VimWiki configs
 let g:vimwiki_list = [{'path': '~/dev/wiki/',
       \ 'syntax': 'markdown',
       \ 'ext': '.md'
       \ }]
-" autocmd FileType netrw setlocal winfixwidth
-" autocmd FileType netrw vertical resize 25
-" function! s:OpenNetrwLeft()
-"   topleft vertical 25new
-"   setlocal winfixwidth
-"   execute 'Explore'
-"   wincmd l
-" endfunction
 
-" autocmd VimEnter * call s:OpenNetrwLeft()
+
+
+" Vimwiki Diary navigation
+nnoremap <leader>wt :VimwikiDiaryIndex<CR>
+nnoremap <leader>wk :VimwikiDiaryPrevDay<CR>
+nnoremap <leader>wj :VimwikiDiaryNextDay<CR>
 
 set splitright
 set noequalalways
