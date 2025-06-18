@@ -1,4 +1,4 @@
-let g:netrw_liststyle = 1           " Use simple list (1 = thin, 2 = wide)
+let g:netrw_liststyle = 3           " Use simple list (1 = thin, 2 = wide)
 let g:netrw_browse_split = 0        " Stay in same window for folders
 let g:netrw_altv = 1                " Open files in vertical split
 let g:netrw_winsize = 60
