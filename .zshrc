@@ -30,8 +30,8 @@ ssh-add ~/.ssh/id_ed25519_personalgithub
 ssh-add ~/.ssh/id_ed25519Github
 ssh-add ~/.ssh/id_ed25519
 
-echo "alias vim=\"nvim\"" | tee -a ~/.zshrc
 git config --global core.editor nvim
+alias vim="nvim"
 
 
 # USD runtime environment
@@ -41,5 +41,3 @@ export PATH=$PATH:./USD-Fileformat-plugins/bin/bin:"/Users/BECKM104/dev/usd/USD-
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/Users/BECKM104/dev/USD-Fileformat-plugins/bin/lib"
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:"/Users/BECKM104/dev/usd/USD-Fileformat-plugins/bin/lib"
 export PXR_PLUGINPATH_NAME=$PXR_PLUGINPATH_NAME:"/Users/BECKM104/dev/usd/USD-Fileformat-plugins/bin/plugin/usd"
-alias vim="nvim"
-alias vim="nvim"

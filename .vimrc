@@ -28,8 +28,9 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
-set splitright
 set noequalalways
+set splitright
+set splitbelow
 set nocompatible
 
 syntax on
@@ -211,4 +212,3 @@ set cmdheight=1
 
 " clipboard interop
 set clipboard=unnamedplus
-set splitbelow
