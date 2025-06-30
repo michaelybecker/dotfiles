@@ -3,6 +3,14 @@
 # Exit immediately on error
 set -e
 
+# Check for Homebrew and install dependencies
+if command -v brew >/dev/null 2>&1; then
+    echo "Installing dependencies with Homebrew..."
+    brew install imagemagick
+else
+    echo "Warning: Homebrew not found. Please install ImageMagick manually for nvim image support."
+fi
+
 # Get absolute path to directory this script is run from
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
@@ -34,3 +42,33 @@ for FILE in "${FILES[@]}"; do
     ln -s "$SOURCE" "$TARGET"
     echo "Linked $TARGET -> $SOURCE"
 done
+
+# Handle .config directory
+CONFIG_TARGET="$HOME/.config"
+CONFIG_SOURCE="$SCRIPT_DIR/.config"
+
+if [ -d "$CONFIG_SOURCE" ]; then
+    # Create .config directory if it doesn't exist
+    mkdir -p "$CONFIG_TARGET"
+    
+    # Link nvim config
+    NVIM_TARGET="$CONFIG_TARGET/nvim"
+    NVIM_SOURCE="$CONFIG_SOURCE/nvim"
+    
+    if [ -d "$NVIM_SOURCE" ]; then
+        # Backup existing nvim config if it exists and is not a symlink
+        if [ -e "$NVIM_TARGET" ] && [ ! -L "$NVIM_TARGET" ]; then
+            echo "Backing up existing $NVIM_TARGET to $NVIM_TARGET.backup"
+            mv "$NVIM_TARGET" "$NVIM_TARGET.backup"
+        fi
+        
+        # Remove existing file or symlink
+        if [ -L "$NVIM_TARGET" ] || [ -e "$NVIM_TARGET" ]; then
+            rm -rf "$NVIM_TARGET"
+        fi
+        
+        # Create new symlink
+        ln -s "$NVIM_SOURCE" "$NVIM_TARGET"
+        echo "Linked $NVIM_TARGET -> $NVIM_SOURCE"
+    fi
+fi
