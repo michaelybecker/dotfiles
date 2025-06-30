@@ -15,10 +15,15 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Dotfiles to link
-FILES=(".vimrc" ".bashrc" ".zshrc")
+FILES=(".vimrc" ".bashrc" ".zshrc" ".wezterm.lua" "tmux.conf")
 
 for FILE in "${FILES[@]}"; do
-    TARGET="$HOME/$FILE"
+    # Special handling for tmux.conf
+    if [ "$FILE" = "tmux.conf" ]; then
+        TARGET="$HOME/.tmux.conf"
+    else
+        TARGET="$HOME/$FILE"
+    fi
     SOURCE="$SCRIPT_DIR/$FILE"
 
     # Warn if source file doesn't exist
