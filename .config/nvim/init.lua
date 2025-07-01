@@ -72,7 +72,9 @@ require("lazy").setup({
   { "nvim-telescope/telescope.nvim", tag = "0.1.8" },
   "nvim-telescope/telescope-media-files.nvim",
   "3rd/image.nvim",
-  "stevearc/oil.nvim"
+  "nvim-tree/nvim-web-devicons",
+  "stevearc/oil.nvim",
+  "tris203/precognition.nvim"
 })
 
 -- Theme settings
@@ -139,7 +141,7 @@ vim.opt.cmdheight = 1
 require('telescope').load_extension('media_files')
 
 -- Image.nvim setup
-require('image').setup{
+require('image').setup({
   backend = "kitty",
   integrations = {
     markdown = {
@@ -162,7 +164,10 @@ require('image').setup{
   max_width_window_percentage = nil,
   max_height_window_percentage = 50,
   kitty_method = "normal",
-}
+})
+
+-- Precognition setup
+require("precognition").setup({})
 
 -- Oil.nvim setup
 require("oil").setup({
