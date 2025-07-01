@@ -16,8 +16,10 @@ source $ZSH/oh-my-zsh.sh
 
 
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+if command -v brew >/dev/null 2>&1; then
+    export PATH="$(brew --prefix)/opt/pyenv/bin:$PATH"
+    eval "$(pyenv init - zsh)"
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -41,3 +43,4 @@ export PATH=$PATH:./USD-Fileformat-plugins/bin/bin:"/Users/BECKM104/dev/usd/USD-
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/Users/BECKM104/dev/USD-Fileformat-plugins/bin/lib"
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:"/Users/BECKM104/dev/usd/USD-Fileformat-plugins/bin/lib"
 export PXR_PLUGINPATH_NAME=$PXR_PLUGINPATH_NAME:"/Users/BECKM104/dev/usd/USD-Fileformat-plugins/bin/plugin/usd"
+export PATH="$HOME/.npm-global/bin:$PATH"

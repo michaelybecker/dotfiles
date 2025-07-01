@@ -71,7 +71,7 @@ require("lazy").setup({
   "nvim-lua/plenary.nvim",
   { "nvim-telescope/telescope.nvim", tag = "0.1.8" },
   "nvim-telescope/telescope-media-files.nvim",
-  "3rd/image.nvim",
+  -- "3rd/image.nvim",
   "nvim-tree/nvim-web-devicons",
   "stevearc/oil.nvim",
   "tris203/precognition.nvim"
@@ -109,7 +109,9 @@ vim.opt.foldlevelstart = 2
 vim.opt.foldnestmax = 10
 
 -- File settings
-vim.opt.fileencoding = 'utf-8'
+if vim.opt.modifiable:get() then
+  vim.opt.fileencoding = 'utf-8'
+end
 vim.opt.fileformats = 'unix,dos,mac'
 vim.opt.autoread = true
 vim.opt.swapfile = false
@@ -140,31 +142,31 @@ vim.opt.cmdheight = 1
 -- Telescope media files setup
 require('telescope').load_extension('media_files')
 
--- Image.nvim setup
-require('image').setup({
-  backend = "kitty",
-  integrations = {
-    markdown = {
-      enabled = true,
-      clear_in_insert_mode = false,
-      download_remote_images = true,
-      only_render_image_at_cursor = false,
-      filetypes = { "markdown", "vimwiki" },
-    },
-    neorg = {
-      enabled = true,
-      clear_in_insert_mode = false,
-      download_remote_images = true,
-      only_render_image_at_cursor = false,
-      filetypes = { "norg" },
-    },
-  },
-  max_width = nil,
-  max_height = nil,
-  max_width_window_percentage = nil,
-  max_height_window_percentage = 50,
-  kitty_method = "normal",
-})
+-- Image.nvim setup (disabled due to compatibility issues)
+-- require('image').setup({
+--   backend = "kitty",
+--   integrations = {
+--     markdown = {
+--       enabled = true,
+--       clear_in_insert_mode = false,
+--       download_remote_images = true,
+--       only_render_image_at_cursor = false,
+--       filetypes = { "markdown", "vimwiki" },
+--     },
+--     neorg = {
+--       enabled = true,
+--       clear_in_insert_mode = false,
+--       download_remote_images = true,
+--       only_render_image_at_cursor = false,
+--       filetypes = { "norg" },
+--     },
+--   },
+--   max_width = nil,
+--   max_height = nil,
+--   max_width_window_percentage = nil,
+--   max_height_window_percentage = 50,
+--   kitty_method = "normal",
+-- })
 
 -- Precognition setup
 require("precognition").setup({})

@@ -6,9 +6,9 @@ set -e
 # Check for Homebrew and install dependencies
 if command -v brew >/dev/null 2>&1; then
     echo "Installing dependencies with Homebrew..."
-    brew install imagemagick slides
+    brew install imagemagick slides pyenv
 else
-    echo "Warning: Homebrew not found. Please install ImageMagick and slides manually for nvim image support."
+    echo "Warning: Homebrew not found. Please install ImageMagick, slides, and pyenv manually."
 fi
 
 # Get absolute path to directory this script is run from
