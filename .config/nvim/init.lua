@@ -14,6 +14,9 @@ vim.g.vimwiki_list = {{
 -- Key mappings
 local keymap = vim.keymap.set
 
+-- Oil.nvim file manager
+keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 -- Vimwiki Diary navigation
 keymap('n', '<leader>wt', ':VimwikiDiaryIndex<CR>')
 keymap('n', '<leader>wk', ':VimwikiDiaryPrevDay<CR>')
@@ -68,7 +71,8 @@ require("lazy").setup({
   "nvim-lua/plenary.nvim",
   { "nvim-telescope/telescope.nvim", tag = "0.1.8" },
   "nvim-telescope/telescope-media-files.nvim",
-  "3rd/image.nvim"
+  "3rd/image.nvim",
+  "stevearc/oil.nvim"
 })
 
 -- Theme settings
@@ -106,8 +110,6 @@ vim.opt.foldnestmax = 10
 vim.opt.fileencoding = 'utf-8'
 vim.opt.fileformats = 'unix,dos,mac'
 vim.opt.autoread = true
-vim.opt.backup = false
-vim.opt.writebackup = false
 vim.opt.swapfile = false
 
 -- Indentation
@@ -161,3 +163,103 @@ require('image').setup{
   max_height_window_percentage = 50,
   kitty_method = "normal",
 }
+
+-- Oil.nvim setup
+require("oil").setup({
+  default_file_explorer = true,
+  columns = {
+    "icon",
+    "permissions",
+    "size",
+    "mtime",
+  },
+  buf_options = {
+    buflisted = false,
+    bufhidden = "hide",
+  },
+  win_options = {
+    wrap = false,
+    signcolumn = "no",
+    cursorcolumn = false,
+    foldcolumn = "0",
+    spell = false,
+    list = false,
+    conceallevel = 3,
+    concealcursor = "nvic",
+  },
+  delete_to_trash = false,
+  skip_confirm_for_simple_edits = false,
+  prompt_save_on_select_new_entry = true,
+  cleanup_delay_ms = 2000,
+  lsp_file_methods = {
+    timeout_ms = 1000,
+    autosave_changes = false,
+  },
+  constrain_cursor = "editable",
+  experimental_watch_for_changes = false,
+  keymaps = {
+    ["g?"] = "actions.show_help",
+    ["<CR>"] = "actions.select",
+    ["<C-s>"] = "actions.select_vsplit",
+    ["<C-h>"] = "actions.select_split",
+    ["<C-t>"] = "actions.select_tab",
+    ["<C-p>"] = "actions.preview",
+    ["<C-c>"] = "actions.close",
+    ["<C-l>"] = "actions.refresh",
+    ["-"] = "actions.parent",
+    ["_"] = "actions.open_cwd",
+    ["`"] = "actions.cd",
+    ["~"] = "actions.tcd",
+    ["gs"] = "actions.change_sort",
+    ["gx"] = "actions.open_external",
+    ["g."] = "actions.toggle_hidden",
+    ["g\\"] = "actions.toggle_trash",
+  },
+  use_default_keymaps = true,
+  view_options = {
+    show_hidden = false,
+    is_hidden_file = function(name, bufnr)
+      return vim.startswith(name, ".")
+    end,
+    is_always_hidden = function(name, bufnr)
+      return false
+    end,
+  },
+  float = {
+    padding = 2,
+    max_width = 0,
+    max_height = 0,
+    border = "rounded",
+    win_options = {
+      winblend = 0,
+    },
+    override = function(conf)
+      return conf
+    end,
+  },
+  preview = {
+    max_width = 0.9,
+    min_width = { 40, 0.4 },
+    width = nil,
+    max_height = 0.9,
+    min_height = { 5, 0.1 },
+    height = nil,
+    border = "rounded",
+    win_options = {
+      winblend = 0,
+    },
+  },
+  progress = {
+    max_width = 0.9,
+    min_width = { 40, 0.4 },
+    width = nil,
+    max_height = { 10, 0.9 },
+    min_height = { 5, 0.1 },
+    height = nil,
+    border = "rounded",
+    minimized_border = "none",
+    win_options = {
+      winblend = 0,
+    },
+  },
+})
