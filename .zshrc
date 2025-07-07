@@ -44,3 +44,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/Users/BECKM104/dev/USD-Fileformat-plug
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:"/Users/BECKM104/dev/usd/USD-Fileformat-plugins/bin/lib"
 export PXR_PLUGINPATH_NAME=$PXR_PLUGINPATH_NAME:"/Users/BECKM104/dev/usd/USD-Fileformat-plugins/bin/plugin/usd"
 export PATH="$HOME/.npm-global/bin:$PATH"
+eval "$(/bin/brew shellenv)"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

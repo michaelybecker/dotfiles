@@ -53,6 +53,9 @@ config.cursor_blink_rate = 800
 -- Scrollback
 config.scrollback_lines = 10000
 
+-- Default to WSL when opening from Windows
+config.default_domain = 'WSL:Ubuntu'
+
 -- Key bindings
 config.keys = {
   {
