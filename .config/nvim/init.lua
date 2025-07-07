@@ -28,6 +28,24 @@ keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 
+-- Fugitive shortcut
+-- Interactive version that prompts for commit message
+local function quick_commit_push()
+    vim.ui.input({ prompt = 'Commit message: ' }, function(commit_msg)
+        if commit_msg and commit_msg ~= '' then
+            vim.cmd('Git add -A')
+            vim.cmd('Git commit -m "' .. commit_msg .. '"')
+            vim.cmd('Git push')
+        end
+    end)
+end
+
+-- Create the command
+vim.api.nvim_create_user_command('WikiCommit', quick_commit_push, {})
+
+-- Set the keymap
+vim.keymap.set('n', '<leader>co', ':WikiCommit<CR>', { noremap = true, silent = true })
+
 -- Window/split settings
 vim.opt.equalalways = false
 vim.opt.splitright = true
