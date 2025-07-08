@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 -- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_browse_split = 0
@@ -271,7 +270,7 @@ require("oil").setup({
     },
   },
 })
-=======
+
 -- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_browse_split = 0
@@ -551,4 +550,3 @@ end, {})
 
 -- Example keymap: <leader>r
 vim.keymap.set('n', '<leader>r', ':ReloadConfig<CR>', { desc = "Reload init.lua" })
->>>>>>> 7bd23d1 (fix window spacing stuff)
