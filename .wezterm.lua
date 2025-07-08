@@ -53,8 +53,10 @@ config.cursor_blink_rate = 800
 -- Scrollback
 config.scrollback_lines = 10000
 
--- Default to WSL when opening from Windows
-config.default_domain = 'WSL:Ubuntu'
+-- Platform-specific configuration
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' or wezterm.target_triple:find('windows') then
+  config.default_domain = 'WSL:Ubuntu'
+end
 
 -- Key bindings
 config.keys = {
