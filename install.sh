@@ -6,9 +6,26 @@ set -e
 # Check for Homebrew and install dependencies
 if command -v brew >/dev/null 2>&1; then
     echo "Installing dependencies with Homebrew..."
-    brew install imagemagick slides pyenv
+    brew install imagemagick slides pyenv fzf
 else
-    echo "Warning: Homebrew not found. Please install ImageMagick, slides, and pyenv manually."
+    echo "Warning: Homebrew not found. Installing fzf manually and other dependencies need manual installation."
+    
+    # Install fzf on Linux
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        if command -v apt-get >/dev/null 2>&1; then
+            sudo apt-get update && sudo apt-get install -y fzf
+        elif command -v yum >/dev/null 2>&1; then
+            sudo yum install -y fzf
+        elif command -v dnf >/dev/null 2>&1; then
+            sudo dnf install -y fzf
+        elif command -v pacman >/dev/null 2>&1; then
+            sudo pacman -S --noconfirm fzf
+        else
+            echo "Warning: No supported package manager found. Please install fzf manually."
+        fi
+    fi
+    
+    echo "Please install ImageMagick, slides, and pyenv manually."
 fi
 
 # Get absolute path to directory this script is run from
