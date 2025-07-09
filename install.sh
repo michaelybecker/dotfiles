@@ -37,7 +37,7 @@ FILES=(".vimrc" ".bashrc" ".zshrc" ".wezterm.lua" "tmux.conf")
 for FILE in "${FILES[@]}"; do
     # Special handling for tmux.conf
     if [ "$FILE" = "tmux.conf" ]; then
-        TARGET="$HOME/.tmux.conf"
+        TARGET="$HOME/.config/tmux/tmux.conf"
     else
         TARGET="$HOME/$FILE"
     fi
