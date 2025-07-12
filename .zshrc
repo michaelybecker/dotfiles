@@ -3,8 +3,29 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load
-ZSH_THEME="robbyrussell"
+# Custom lean prompt with git info
+ZSH_THEME=""
+
+# Git status function
+git_prompt_info() {
+  if git rev-parse --git-dir > /dev/null 2>&1; then
+    local branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+    local status=""
+    
+    # Check for changes
+    if ! git diff --quiet 2>/dev/null; then
+      status="*"
+    elif ! git diff --cached --quiet 2>/dev/null; then
+      status="+"
+    fi
+    
+    echo " %F{yellow}$branch%f%F{red}$status%f"
+  fi
+}
+
+# Custom prompt
+setopt PROMPT_SUBST
+PROMPT='%F{cyan}%1~%f$(git_prompt_info) %F{green}❯%f '
 
 # Which plugins would you like to load?
 plugins=(git)
