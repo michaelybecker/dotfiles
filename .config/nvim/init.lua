@@ -187,7 +187,9 @@ vim.api.nvim_create_autocmd("WinNew", {
 require('telescope').load_extension('media_files')
 
 -- Precognition setup
-require("precognition").setup({})
+require("precognition").setup({
+  startVisible = false,
+})
 
 -- Oil.nvim setup
 require("oil").setup({
