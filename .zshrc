@@ -125,7 +125,12 @@ source $ZSH/oh-my-zsh.sh
 # ==================
 
 export PYENV_ROOT="$HOME/.pyenv"
-if command -v brew >/dev/null 2>&1; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # WSL/Linux pyenv setup
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init - zsh)"
+elif command -v brew >/dev/null 2>&1; then
+    # macOS brew pyenv setup
     export PATH="$(brew --prefix)/opt/pyenv/bin:$PATH"
     eval "$(pyenv init - zsh)"
 fi
@@ -151,3 +156,15 @@ fi
 if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+# Force WSL pyenv to take precedence over Windows pyenv
+if [[ "$OSTYPE" == "linux-gnu"* ]] && [[ -d "$HOME/.pyenv" ]]; then
+    export PATH="$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH"
+fi
+
+# bun completions
+[ -s "/home/mbecker/.bun/_bun" ] && source "/home/mbecker/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
